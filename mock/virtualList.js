@@ -7,11 +7,12 @@ router.get('/fixedHeightList', function (req, res, next) {
   res.send(
     Mock.mock({
       code: 200,
-      'list|1000': [
+      'data|1000': [
         {
-          img: Mock.Random.image('100x100', '@city()'),
-          text: '@city()',
+          img: Mock.Random.image('100x100', Mock.Random.color().substring(1, 6), '@city'),
+          text: '@city',
           'value|+1': 0,
+          address: '@county(true)',
         },
       ],
     })
