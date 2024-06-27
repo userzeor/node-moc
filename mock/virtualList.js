@@ -9,7 +9,31 @@ router.get('/fixedHeightList', function (req, res, next) {
       code: 200,
       'data|1000': [
         {
-          img: Mock.Random.image('100x100', Mock.Random.color().substring(1, 6), '@city'),
+          img: Mock.Random.image(
+            '100x100',
+            Mock.Random.color().substring(1, 6),
+            '@city'
+          ),
+          text: '@city',
+          'value|+1': 0,
+          address: '@county(true)',
+        },
+      ],
+    })
+  )
+})
+
+router.get('/dynamicHeightList', function (req, res, next) {
+  res.send(
+    Mock.mock({
+      code: 200,
+      'data|1000': [
+        {
+          img: Mock.Random.image(
+            '100x@integer(100,500)',
+            Mock.Random.color().substring(1, 6),
+            '@city'
+          ),
           text: '@city',
           'value|+1': 0,
           address: '@county(true)',
